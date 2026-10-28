@@ -9,6 +9,6 @@ test("returns a date in YYYY-MM-DD format", () => {
 test("throws for a date that does not match YYYY-MM-DD", () => {
   assert.throws(() => formatForecastDate("28-10-2026"), {
     name: "Error",
-    message: "bad input",
+    message: "Forecast date must be YYYY-MM-DD",
   });
 });
