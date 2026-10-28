@@ -1,0 +1,11 @@
+{
+  "forecast": [
+    { "date": "2026-10-28", "temperature": 17 },
+    { "date": "2026-10-29", "temperature": 18 },
+    { "date": "2026-10-30", "temperature": 16 },
+    { "date": "2026-10-31", "temperature": 15 },
+    { "date": "2026-11-01", "temperature": 14 },
+    { "date": "2026-11-02", "temperature": 16 },
+    { "date": "2026-11-03", "temperature": 19 }
+  ]
+}
