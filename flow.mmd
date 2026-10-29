@@ -1,0 +1,5 @@
+flowchart LR
+  input --> validate
+  validate -->|ok| process
+  validate -->|bad| error
+  process --> output
