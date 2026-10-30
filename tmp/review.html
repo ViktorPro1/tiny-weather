@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Flow Review</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #10151d; color: #e9eef5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; padding: 28px; }
+    main { max-width: 1040px; margin: auto; }
+    h1 { margin: 0 0 6px; font-size: 1.5rem; }
+    .subtitle { margin: 0 0 22px; color: #9eacbd; }
+    .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    section { min-width: 0; padding: 18px; border: 1px solid #2d3949; border-radius: 12px; background: #171f2a; }
+    h2 { margin: 0 0 15px; color: #b7c7da; font-size: 1rem; }
+    .diagram { display: grid; grid-template-columns: auto auto auto; align-items: center; justify-content: center; gap: 10px; min-height: 142px; }
+    .node { padding: 10px 13px; border: 1px solid #60758e; border-radius: 8px; background: #202d3c; font-weight: 650; }
+    .arrow { color: #81c8bb; font-size: 1.2rem; }
+    .branches { display: grid; gap: 8px; }
+    .branch { display: flex; align-items: center; gap: 7px; }
+    .ok-branch { align-items: flex-start; }
+    .process-stack { display: grid; justify-items: center; gap: 4px; }
+    .branch-label { color: #aebccc; font-size: .8rem; }
+    .output { display: flex; align-items: center; gap: 8px; }
+    ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    li { padding: 11px 12px; border-radius: 7px; background: #202a37; color: #d4deea; font-family: ui-monospace, monospace; }
+    .trace { grid-column: 1 / -1; }
+    .steps { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .step { padding: 8px 11px; border-radius: 999px; background: #253647; color: #d6e9e5; }
+    .step-arrow { color: #81c8bb; }
+    @media (max-width: 650px) { body { padding: 16px; } .layout { grid-template-columns: 1fr; } .trace { grid-column: auto; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Flow review</h1>
+    <p class="subtitle">A local overview of the diagram, reviewed files, and state trace.</p>
+    <div class="layout">
+      <section aria-labelledby="flow-title">
+        <h2 id="flow-title">flow.mmd</h2>
+        <div class="diagram" aria-label="input to validate; validate ok to process, bad to error; process to output">
+          <span class="node">input</span><span class="arrow">→</span><span class="node">validate</span>
+          <div class="branches">
+            <div class="branch ok-branch"><span class="branch-label">ok →</span><div class="process-stack"><span class="node">process</span><span class="arrow">↓</span><span class="node">output</span></div></div>
+            <div class="branch"><span class="branch-label">bad →</span><span class="node">error</span></div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="files-title">
+        <h2 id="files-title">Files in review</h2>
+        <ul>
+          <li>src/forecast.js</li>
+          <li>src/format.js</li>
+          <li>flow.mmd</li>
+        </ul>
+      </section>
+      <section class="trace" aria-labelledby="trace-title">
+        <h2 id="trace-title">State trace</h2>
+        <div class="steps">
+          <span class="step">valid</span><span class="step-arrow">→</span><span class="step">ok</span>
+          <span class="step-arrow">·</span>
+          <span class="step">invalid</span><span class="step-arrow">→</span><span class="step">error</span>
+          <span class="step-arrow">·</span>
+          <span class="step">ok</span><span class="step-arrow">→</span><span class="step">output</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
